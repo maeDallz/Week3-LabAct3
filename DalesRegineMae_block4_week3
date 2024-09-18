@@ -1,0 +1,63 @@
+<?php
+// Base Vehicle class
+class Vehicle {
+    protected $make;
+    protected $model;
+    protected $year;
+
+    public function __construct($make, $model, $year) {
+        $this->make = $make;
+        $this->model = $model;
+        $this->year = $year;
+    }
+
+    public function getDetails() {
+        return "{$this->year} {$this->make} {$this->model}";
+    }
+
+    public function describe() {
+        return "This is a vehicle.";
+    }
+}
+
+// Car class inheriting from Vehicle
+class Car extends Vehicle {
+    public function describe() {
+        return "This is a car with 4 doors.";
+    }
+}
+
+// Motorcycle class inheriting from Vehicle
+class Motorcycle extends Vehicle {
+    public function describe() {
+        return "This is a motorcycle.";
+    }
+}
+
+// ElectricCar class inheriting from Car
+class ElectricCar extends Car {
+    public function describe() {
+        return "This is an electric car.";
+    }
+
+    public function chargeBattery() {
+        return "The battery is being charged.";
+    }
+}
+
+// Create instances of the vehicles
+$car = new Car('Toyota', 'Camry', 2020);
+$motorcycle = new Motorcycle('Harley-Davidson', 'Sportster', 2021);
+$electricCar = new ElectricCar('Tesla', 'Model 3', 2022);
+
+// Output details and descriptions
+echo $car->getDetails() . "\n";
+echo $car->describe() . "\n\n";
+
+echo $motorcycle->getDetails() . "\n";
+echo $motorcycle->describe() . "\n\n";
+
+echo $electricCar->getDetails() . "\n";
+echo $electricCar->describe() . "\n";
+echo $electricCar->chargeBattery() . "\n";
+?>
